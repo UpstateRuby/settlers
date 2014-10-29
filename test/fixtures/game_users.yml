@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: spock 
+  game: first 
+
+two:
+  user: kirk 
+  game: first

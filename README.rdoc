@@ -1,0 +1,17 @@
+== README
+
+Instructions to get settlers up and running
+
+* install redis if needed - brew install redis
+
+* install mysql if needed - google brew install mysql 
+
+* cp config/database.yml.example config/database.yml
+
+* edit config/database.yml to connect to your database
+
+* rake db:create
+
+* rake db:migrate
+
+* rails s
