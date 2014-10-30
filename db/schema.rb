@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029044150) do
+ActiveRecord::Schema.define(version: 20141029051052) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["game_id"], name: "index_comments_on_game_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "game_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "game_users", ["game_id"], name: "index_game_users_on_game_id", using: :btree
+  add_index "game_users", ["user_id"], name: "index_game_users_on_user_id", using: :btree
 
   create_table "games", force: true do |t|
     t.string   "name"
