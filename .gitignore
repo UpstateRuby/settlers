@@ -11,6 +11,10 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /config/database.yml
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore node modules
+node_modules/
