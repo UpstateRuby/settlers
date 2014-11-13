@@ -1,0 +1,9 @@
+{
+  "name": "settlers-of-catan",
+  "version": "0.0.1",
+  "dependencies": {
+    "kinetic": "^5.0.6",
+    "requirejs": "^2.1.15",
+    "underscore": "^1.7.0"
+  }
+}
