@@ -15,3 +15,6 @@ Instructions to get settlers up and running
 * rake db:migrate
 
 * rails s
+
+Cartesian cooardinate system so that every hex can be represented by two numbers
+vertices could always be referenced by hex # and left or right
