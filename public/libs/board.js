@@ -8,6 +8,8 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
 
     var hexagonalBloom = function(amount){
         var radius = window.innerWidth / 24,
+            hexHeight = radius * 2,
+            hexWidth = Math.sqrt(3) / 2 * hexHeight,
             getRandomColor = function() {
                 return '#' + Math.floor(Math.random() * 16777215).toString(16)
             },
@@ -18,8 +20,6 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
                 sides: 6,
                 fill: getRandomColor()
             }),
-            hexHeight = radius * 2,
-            hexWidth = (Math.sqrt(3) / 2) * hexHeight,
             group = new Kinetic.Group().add(hex),
             spacingMap = {
                 tr: {
@@ -55,11 +55,13 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
                         y = tile.y() + distance.y;
 
                     if (!stage.getIntersection({x: x, y: y})){
-                        group.add(tile.clone({
-                            x: x,
-                            y: y,
-                            fill: getRandomColor()
-                        }));
+                        group.add(
+                            tile.clone({
+                                x: x,
+                                y: y,
+                                fill: getRandomColor()
+                            })
+                        );
                     }
                 });
             });
