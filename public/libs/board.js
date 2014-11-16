@@ -60,8 +60,6 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
                             y: y,
                             fill: getRandomColor()
                         }));
-
-                        layer.draw();
                     }
                 });
             });
@@ -71,4 +69,5 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
     };
 
     layer.add(hexagonalBloom(3));
+    layer.draw();
 });
