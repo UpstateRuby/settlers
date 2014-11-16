@@ -48,8 +48,6 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
                 }
             };
 
-        layer.add(group);
-
         _.times(amount, function(){
             _.each(group.getChildren(), function(tile) {
                 _.each(spacingMap, function(distance){
@@ -72,5 +70,5 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
         return group;
     };
 
-    hexagonalBloom(3);
+    layer.add(hexagonalBloom(3));
 });
