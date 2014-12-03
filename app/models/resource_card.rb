@@ -9,7 +9,9 @@ class ResourceCard < ActiveRecord::Base
 
   # image
 
-  belongs_to :theme
+  #belongs_to :theme
+
+  delegate :theme to: :game
 
 
 

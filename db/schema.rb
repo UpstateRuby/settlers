@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029051052) do
+ActiveRecord::Schema.define(version: 20141203235635) do
+
+  create_table "cards_games", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -23,6 +28,11 @@ ActiveRecord::Schema.define(version: 20141029051052) do
 
   add_index "comments", ["game_id"], name: "index_comments_on_game_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "development_cards", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "game_users", force: true do |t|
     t.integer  "user_id"
@@ -38,6 +48,55 @@ ActiveRecord::Schema.define(version: 20141029051052) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "theme_id"
+  end
+
+  add_index "games", ["theme_id"], name: "index_games_on_theme_id", using: :btree
+
+  create_table "hexes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "resouce_id"
+    t.integer  "number"
+    t.string   "resource"
+    t.integer  "game_id"
+  end
+
+  add_index "hexes", ["resouce_id"], name: "index_hexes_on_resouce_id", using: :btree
+
+  create_table "pieces", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resource_cards", force: true do |t|
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "themes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "lumber_name"
+    t.string   "lumber_card_img_path"
+    t.string   "lumber_hex_img_path"
+    t.string   "brick_name"
+    t.string   "brick_card_img_path"
+    t.string   "brick_hex_img_path"
+    t.string   "ore_name"
+    t.string   "ore_card_img_path"
+    t.string   "ore_hex_img_path"
+    t.string   "grain_name"
+    t.string   "grain_card_img_path"
+    t.string   "grain_hex_img_path"
+    t.string   "wool_name"
+    t.string   "wool_card_img_path"
+    t.string   "wool_hex_img_path"
+    t.string   "desert_name"
+    t.string   "desert_card_img_path"
+    t.string   "desert_hex_img_path"
   end
 
   create_table "users", force: true do |t|
