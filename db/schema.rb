@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113012908) do
+ActiveRecord::Schema.define(version: 20141203235635) do
 
   create_table "cards_games", force: true do |t|
     t.datetime "created_at"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20141113012908) do
     t.datetime "updated_at"
     t.integer  "resouce_id"
     t.integer  "number"
+    t.string   "resource"
+    t.integer  "game_id"
   end
 
   add_index "hexes", ["resouce_id"], name: "index_hexes_on_resouce_id", using: :btree

@@ -34,11 +34,11 @@ class Game < ActiveRecord::Base
     resources.shuffle
 
     numbers.shuffle.each do |number|
-      self.hexes.create(number: number, resource: resources.pop)
+      self.hexes.build(number: number, resource: resources.pop)
     end
 
     #desert.
-    self.hexes.create(number: nil, resource: self.theme.desert_name)
+    self.hexes.build(number: nil, resource: self.theme.desert_name)
 
   end
 
