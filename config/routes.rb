@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'games#index'
+  root 'home#show'
+
+  resources :games
 
   get '/sockets/chat' => 'sockets#chat'
   get '*path' => 'application#index'

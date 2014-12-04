@@ -25,11 +25,11 @@ class Game < ActiveRecord::Base
     numbers = [2,3,3,4,4,5,5,6,6,8,8,9,9,10,10,11,11,12]
     resources = []
     
-    4.times { resources << self.theme.lumber_name }
-    4.times { resources << self.theme.wool_name }
-    4.times { resources << self.theme.grain_name }
-    3.times { resources << self.theme.brick_name }    
-    3.times { resources << self.theme.ore_name }
+    4.times { resources << 'lumber' }
+    4.times { resources << 'wool' }
+    4.times { resources << 'grain' }
+    3.times { resources << 'brick' }    
+    3.times { resources << 'ore' }
 
     resources.shuffle
 
