@@ -14,6 +14,8 @@ Instructions to get settlers up and running
 
 * rake db:migrate
 
+* rake db:seed
+
 * rails s
 
 Cartesian cooardinate system so that every hex can be represented by two numbers
