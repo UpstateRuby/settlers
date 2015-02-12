@@ -4,8 +4,12 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+one: {
+  name: 'Original',
+  lumber_name: 'lumber',
+  brick_name: 'brick',
+  ore_name: 'ore',
+  grain_name: 'grain',
+  wool_name: 'wool',
+  desert_name: 'desert'
+}
