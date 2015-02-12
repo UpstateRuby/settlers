@@ -8,7 +8,10 @@ class GamesController < AuthenticatedController
   end
 
   def show
-    game = Game.find(params[:id]).as_json(:include => {hexes: {methods: [:resource_name, :resource_image_url]}})
+    game = Game.find(params[:id]).as_json(:include => 
+      {hexes: {only: [:number, :resource], 
+        methods: [:resource_name, :resource_image_url]}
+    })
     render json: game
   end
 
