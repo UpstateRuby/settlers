@@ -11,7 +11,7 @@ class ResourceCard < ActiveRecord::Base
 
   #belongs_to :theme
 
-  delegate :theme to: :game
+  #delegate :theme, to: :game
 
 
 
