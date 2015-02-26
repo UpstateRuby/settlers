@@ -64,4 +64,34 @@ class GameTest < ActiveSupport::TestCase
     )
   end
 
+  test "getting resources" do
+    game = Game.new
+    resources = game.get_resources
+    assert(resources == [
+      'lumber', 'lumber', 'lumber', 'lumber',
+      'wool', 'wool', 'wool', 'wool',
+      'grain', 'grain', 'grain', 'grain',
+      'brick', 'brick', 'brick',
+      'ore', 'ore', 'ore'
+    ])
+  end
+
+  test "getting resources with less than default" do
+    game = Game.new
+    resources = game.get_resources(17)
+    assert(resources == [
+      'lumber', 'lumber', 'lumber', 'lumber',
+      'wool', 'wool', 'wool', 'wool',
+      'grain', 'grain', 'grain', 'grain',
+      'brick', 'brick', 'brick',
+      'ore', 'ore', 'ore'
+    ])
+  end
+
+  test "getting resources with 1 more than default" do
+    game = Game.new
+    resources = game.get_resources(19)
+    assert(resources.count == 19, "Did not return correct amount of resources")
+  end
+
 end

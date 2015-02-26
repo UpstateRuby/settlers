@@ -11,7 +11,7 @@ class Hex < ActiveRecord::Base
   before_validation :setup
 
   def setup
-    
+
   end
 
   def resource_name

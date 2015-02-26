@@ -22,19 +22,8 @@ class Game < ActiveRecord::Base
   end
 
   def create_hexes
-    # Original game is 18 + 1 dessert
-    # Expansion adds 10 + 1 dessert
-    # expansion adds 1 to every number
-    # expansion_numbers = [2,2,3,3,3,4,4,4,5,5,5,6,6,6,8,8,8,9,9,9,10,10,10,11,11,11,12,12]
     numbers = self.get_numbers_for_resources
-    resources = []
-
-    4.times { resources << 'lumber' }
-    4.times { resources << 'wool' }
-    4.times { resources << 'grain' }
-    3.times { resources << 'brick' }
-    3.times { resources << 'ore' }
-
+    resources = self.get_resources
     resources.shuffle
 
     numbers.shuffle.each do |number|
@@ -70,4 +59,30 @@ class Game < ActiveRecord::Base
     return numbers
   end
 
+  def get_resources(total_resources = 18)
+    resources = [
+      'lumber', 'lumber', 'lumber', 'lumber',
+      'wool', 'wool', 'wool', 'wool',
+      'grain', 'grain', 'grain', 'grain',
+      'brick', 'brick', 'brick',
+      'ore', 'ore', 'ore'
+    ]
+
+    if total_resources < 19
+      return resources
+    end
+
+    expansion = [
+      'lumber', 'lumber',
+      'wool', 'wool',
+      'grain', 'grain',
+      'brick', 'brick',
+      'ore', 'ore'
+    ]
+    additional_resource_count = total_resources - 18
+
+    resources += expansion.sample(additional_resource_count);
+
+    return resources
+  end
 end
