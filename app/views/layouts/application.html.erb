@@ -8,7 +8,19 @@
   <%= yield :head %>
   <base href="/">
 </head>
-    <body>
-      <%= yield %>
-    </body>
+
+<body>
+  <div id="header">
+    <% if current_user %>
+      <div id="welcome">
+        Welcome, <%= current_user.email %>
+      </div>
+      <div id="login">
+        Logout
+      </div>
+    <% end %>
+  </div>
+  <%= yield %>
+</body>
+
 </html>
