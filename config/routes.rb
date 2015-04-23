@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :games
 
+  get '/roll' => 'dice#roll'
+
   get '/sockets/chat' => 'sockets#chat'
   get '*path' => 'application#index'
 
