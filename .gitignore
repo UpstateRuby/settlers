@@ -18,3 +18,6 @@
 
 # Ignore node modules
 node_modules/
+
+#Ignore DS_Store
+.DS_Store
