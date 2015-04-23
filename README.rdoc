@@ -4,17 +4,25 @@ Instructions to get settlers up and running
 
 * install redis if needed - brew install redis
 
-* install mysql if needed - google brew install mysql 
+* install mysql if needed - google brew install mysql
+
+* install ruby (suggest using a version manager like rvm, rbenv, or chruby)
+
+* install node (need npm for front-end at the moment, can use homebrew to install)
 
 * cp config/database.yml.example config/database.yml
 
 * edit config/database.yml to connect to your database
+
+* bundle install
 
 * rake db:create
 
 * rake db:migrate
 
 * rake db:seed
+
+* cd public/deps; npm install
 
 * rails s
 
