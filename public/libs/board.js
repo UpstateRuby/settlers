@@ -70,6 +70,7 @@ require(['underscore', 'KineticJS'], function(_, Kinetic){
         return group;
     };
 
-    layer.add(hexagonalBloom(3));
+    var boardSize = (game.hexes.length-1)/6;
+    layer.add(hexagonalBloom(boardSize));
     layer.draw();
 });
