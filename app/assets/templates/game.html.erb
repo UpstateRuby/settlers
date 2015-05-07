@@ -1,7 +1,7 @@
 <h1>Settlers Chat</h1>
-<pre id="output">
+<div id="output">
   <div ng-repeat="comment in comments track by $index">{{comment}}</div>
-</pre>
+</div>
 <form class="chat" ng-submit="sendComment()">
   <input ng-model="comment" placeholder="say something" autofocus />
   <input type="submit" name="submit" value="Send" />
