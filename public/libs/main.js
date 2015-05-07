@@ -1,7 +1,7 @@
 require.config({
     paths: {
-        KineticJS: '../deps/node_modules/kinetic/kinetic',
-        underscore: '../deps/node_modules/underscore/underscore'
+        pixi: '../deps/bower_components/pixi.js/bin/pixi',
+        underscore: '../deps/bower_components/lodash/lodash'
     }
 });
 

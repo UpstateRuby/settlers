@@ -1,76 +1,47 @@
-require(['underscore', 'KineticJS'], function(_, Kinetic){
-    var layer = new Kinetic.Layer,
-        stage = new Kinetic.Stage({
-            container: 'game',
-            width: window.innerWidth,
-            height: window.innerHeight
-        }).add(layer);
+require(['lodash', 'pixi', 'hexPixi'], function(_, pixi, hexPixi){
+    'use strict';
 
-    var hexagonalBloom = function(amount){
-        var radius = window.innerWidth / 24,
-            hexHeight = radius * 2,
-            hexWidth = Math.sqrt(3) / 2 * hexHeight,
-            getRandomColor = function() {
-                return '#' + Math.floor(Math.random() * 16777215).toString(16)
-            },
-            hex = new Kinetic.RegularPolygon({
-                x: window.innerWidth / 2,
-                y: window.innerHeight / 2,
-                radius: radius,
-                sides: 6,
-                fill: getRandomColor()
-            }),
-            group = new Kinetic.Group().add(hex),
-            spacingMap = {
-                tr: {
-                    x: hexWidth / 2,
-                    y: 0.75 * hexHeight
-                },
-                br: {
-                    x: hexWidth / 2,
-                    y: -0.75 * hexHeight
-                },
-                mr: {
-                    x: hexWidth,
-                    y: 0
-                },
-                ml: {
-                    x: -hexWidth,
-                    y: 0
-                },
-                tl: {
-                    x: -hexWidth / 2,
-                    y: 0.75 * hexHeight
-                },
-                bl: {
-                    x: -hexWidth / 2,
-                    y: -0.75 * hexHeight
-                }
-            };
-
-        _.times(amount, function(){
-            _.each(group.getChildren(), function(tile) {
-                _.each(spacingMap, function(distance){
-                    var x = tile.x() + distance.x,
-                        y = tile.y() + distance.y;
-
-                    if (!stage.getIntersection({x: x, y: y})){
-                        group.add(
-                            tile.clone({
-                                x: x,
-                                y: y,
-                                fill: getRandomColor()
-                            })
-                        );
-                    }
-                });
-            });
+    var map = null,
+        stage = new pixi.Stage(0xe0e0e0),
+        renderer = new pixi.autoDetectRenderer(800, 600, {
+            antialiasing: true,
+            transparent: false,
+            resolution: 1
         });
 
-        return group;
-    };
+    function setupPixiJs() {
+        // add the renderer view element to the DOM
+        var div = document.getElementById('stage');
+        div.appendChild(renderer.view);
 
-    var boardSize = (game.hexes.length-1)/6;
-    layer.add(hexagonalBloom(boardSize));
-    layer.draw();
+        //requestAnimFrame(animate);
+        map = new hexPixi.Map(stage, {
+            mapWidth: 10,
+            mapHeight: 8,
+            coordinateSystem: 2,
+            hexLineWidth: 2,
+            hexSize: 40,
+            showCoordinates: true,
+            textures: ["images/game/texture/grassTexture.jpg", "images/game/texture/waterTexture.jpg"],
+            terrainTypes: [
+                { name: "brick", textureIndex: 0, color: 0x9B5523 },
+                { name: "desert", textureIndex: 1, color: 0xdBd588 },
+                { name: "ore", textureIndex: 2, color: 0xebebfa },
+                { name: "sheep", textureIndex: 3, color: 0x4060fa },
+                { name: "wheat", textureIndex: 4, color: 0x10fa10 },
+                { name: "wood", textureIndex: 5, color: 0x10fa10 }
+            ],
+            onAssetsLoaded: function () {
+                console.log('done');
+            }
+        });
+    }
+
+    function initPage() {
+        setupPixiJs();
+
+        map.generateRandomMap();
+    }
+
+    initPage();
 });

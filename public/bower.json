@@ -1,0 +1,10 @@
+{
+  "name": "settlers-of-catan",
+  "version": "0.0.1",
+  "dependencies": {
+    "pixi.js": "~3.0.2",
+    "lodash": "~3.8.0",
+    "requirejs": "~2.1.17",
+    "hexPixi": "https://github.com/mjhasbach/HexPixiJs.git#bower"
+  }
+}
